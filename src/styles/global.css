@@ -1,7 +1,37 @@
 @import "tailwindcss";
 
 /*
-  O CSS visual do design aprovado (index.html) entra abaixo desta linha,
-  como veio no arquivo original. Tailwind é usado só para o que for
+  CSS do design aprovado (index.html), trazido como veio — sem conversão
+  para utilitários Tailwind. Tailwind é usado só para o que for
   adicionado depois (analytics, novas páginas), não para reescrever isto.
 */
+html{scroll-behavior:smooth}
+body{margin:0;background:#F7F3EE;font-family:Archivo,"Helvetica Neue",sans-serif;color:#1A1512;-webkit-font-smoothing:antialiased}
+a{color:#C4411D}a:hover{color:#A83410}
+.grifo{position:relative;display:inline;z-index:0;color:#FFFFFF}
+.grifo::before{content:"";position:absolute;left:-.14em;right:-.14em;top:.14em;bottom:.02em;background:#ED5A2F;border-radius:.45em .3em .5em .35em;transform:rotate(-.7deg);z-index:-1}
+.grifo-fino::before{top:.44em;bottom:.04em;border-radius:.3em;background:#C9400F}
+.wrap{max-width:1180px;margin:0 auto;padding:0 40px;box-sizing:border-box}
+.eyebrow{font-family:"IBM Plex Mono",monospace;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#4C443E}
+.mono{font-family:"IBM Plex Mono",monospace}
+.card{background:#FFFCF7;border:1px solid #E5DCD2;border-radius:14px;box-sizing:border-box}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:56px;padding:0 30px;border-radius:10px;font-weight:600;font-size:17px;text-decoration:none;border:1px solid transparent}
+.btn-p{background:#1A1512;color:#FFFFFF}
+.btn-p:hover{background:#000000;color:#FFFFFF}
+.btn-s{background:transparent;color:#1A1512;border-color:#C4B8AA}
+.btn-s:hover{background:#EFE7DD;color:#1A1512;border-color:#ED5A2F}
+h1,h2,h3{font-family:Spectral,Georgia,serif;font-weight:600;margin:0;letter-spacing:-.01em}
+p{margin:0}
+ul{margin:0;padding:0;list-style:none}
+.rule{height:1px;background:#E5DCD2;border:0;margin:0}
+@media (max-width:860px){
+.wrap{padding:0 22px}
+.h1{font-size:40px !important;line-height:1.1 !important}
+.two{grid-template-columns:1fr !important}
+.three{grid-template-columns:1fr !important}
+.sec{padding:64px 0 !important}
+.heroPad{padding:56px 0 64px !important}
+.priceRow{flex-direction:column !important;align-items:stretch !important}
+.ctaRow{flex-direction:column !important;align-items:stretch !important}
+.btn{width:100%}
+}

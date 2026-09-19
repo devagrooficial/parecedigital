@@ -1,0 +1,49 @@
+---
+import '../styles/global.css';
+
+interface Props {
+	title?: string;
+	description?: string;
+}
+
+const {
+	title = 'Parecer Digital — análise de conversas para advogados em 48 horas',
+	description = 'Você envia o export do WhatsApp. Em 48 horas recebe um parecer técnico com os trechos que sustentam sua tese, linha do tempo e hash de integridade. R$ 1.800 por caso.',
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const ogImageURL = new URL('/og.png', Astro.site);
+---
+
+<!doctype html>
+<html lang="pt-BR">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+		<title>{title}</title>
+		<meta name="description" content={description} />
+		<link rel="canonical" href={canonicalURL} />
+		<meta property="og:type" content="website" />
+		<meta property="og:locale" content="pt_BR" />
+		<meta property="og:site_name" content="Parecer Digital" />
+		<meta property="og:title" content={title} />
+		<meta
+			property="og:description"
+			content="40 mil mensagens no arquivo e três dias para peticionar. Parecer técnico com trechos citados, linha do tempo e hash de integridade."
+		/>
+		<meta property="og:url" content={canonicalURL} />
+		<meta property="og:image" content={ogImageURL} />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="theme-color" content="#ED5A2F" />
+		<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			rel="stylesheet"
+			href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;0,700;1,400&family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap"
+		/>
+	</head>
+	<body>
+		<slot />
+	</body>
+</html>
