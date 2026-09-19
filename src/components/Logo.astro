@@ -3,11 +3,11 @@ import { Image } from 'astro:assets';
 import logo from '../assets/logo/logoh1.png';
 
 interface Props {
-	height?: number;
+	width?: number;
 }
 
-const { height = 28 } = Astro.props;
-const width = Math.round((height * logo.width) / logo.height);
+const { width = 170 } = Astro.props;
+const height = Math.round((width * logo.height) / logo.width);
 ---
 
 <Image src={logo} alt="Parecer Digital" height={height} width={width} />
