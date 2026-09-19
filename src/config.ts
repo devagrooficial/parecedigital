@@ -9,7 +9,6 @@ export const WHATSAPP_NUMBER = '5565998007684';
 export const WHATSAPP_DISPLAY = '+55 65 99800-7684';
 
 export const CONTACT = {
-	razaoSocial: '[SUA RAZÃO SOCIAL]', // TODO
 	cnpj: '50.082.704/0001-29',
 	cidade: 'Cuiabá',
 } as const;
