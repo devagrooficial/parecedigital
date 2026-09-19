@@ -1,6 +1,29 @@
 @import "tailwindcss";
 
 /*
+  Tokens da marca, para as páginas novas (termos, privacidade, obrigado)
+  que usam utilitários Tailwind — ex.: bg-cream, text-ink, font-serif.
+  A página aprovada abaixo usa os hex direto e não depende disto.
+*/
+@theme {
+	--font-sans: Archivo, "Helvetica Neue", sans-serif;
+	--font-serif: Spectral, Georgia, serif;
+	--font-mono: "IBM Plex Mono", monospace;
+
+	--color-ink: #1A1512;
+	--color-cream: #F7F3EE;
+	--color-cream-card: #FFFCF7;
+	--color-muted: #4C443E;
+	--color-muted-2: #6F655D;
+	--color-hairline: #E5DCD2;
+	--color-rust: #C4411D;
+	--color-rust-dark: #A83410;
+	--color-accent: #ED5A2F;
+	--color-accent-dark: #C9400F;
+	--color-accent-light: #F8845F;
+}
+
+/*
   CSS do design aprovado (index.html), trazido como veio — sem conversão
   para utilitários Tailwind. Tailwind é usado só para o que for
   adicionado depois (analytics, novas páginas), não para reescrever isto.
@@ -29,10 +52,18 @@ a{color:#C4411D}a:hover{color:#A83410}
 .btn-p:hover{background:#000000;color:#FFFFFF}
 .btn-s{background:transparent;color:#1A1512;border-color:#C4B8AA}
 .btn-s:hover{background:#EFE7DD;color:#1A1512;border-color:#ED5A2F}
-h1,h2,h3{font-family:Spectral,Georgia,serif;font-weight:600;margin:0;letter-spacing:-.01em}
-p{margin:0}
-ul{margin:0;padding:0;list-style:none}
 .rule{height:1px;background:#E5DCD2;border:0;margin:0}
+/*
+  Escopadas em .legacy (só a marcação do design aprovado, ver index.astro):
+  são resets de elemento cru (h1/h2/h3/p/ul) e, sem escopo, vazam para
+  páginas novas em Tailwind — zeram margem de <p>/<h2> e o marcador de
+  <ul> ali, já que uma regra de elemento sem @layer do CSS legado vence
+  um utilitário do Tailwind (que vive dentro de @layer utilities),
+  independente de especificidade.
+*/
+.legacy h1,.legacy h2,.legacy h3{font-family:Spectral,Georgia,serif;font-weight:600;margin:0;letter-spacing:-.01em}
+.legacy p{margin:0}
+.legacy ul{margin:0;padding:0;list-style:none}
 @media (max-width:860px){
 .wrap{padding:0 22px}
 .h1{font-size:40px !important;line-height:1.1 !important}

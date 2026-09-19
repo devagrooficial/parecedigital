@@ -1,0 +1,176 @@
+---
+import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { CONTACT, WHATSAPP_DISPLAY } from '../config';
+
+const ATUALIZADO_EM = '19 de setembro de 2026';
+
+const secoes = [
+	{ id: 'definicoes', titulo: '1. Definições e partes' },
+	{ id: 'natureza', titulo: '2. O que este serviço é e o que não é' },
+	{ id: 'escopo', titulo: '3. Escopo, prazo e preço' },
+	{ id: 'origem-licita', titulo: '4. Responsabilidade pela origem e licitude do material' },
+	{ id: 'confidencialidade', titulo: '5. Confidencialidade e tratamento do material' },
+	{ id: 'lgpd', titulo: '6. Proteção de dados pessoais (LGPD)' },
+	{ id: 'propriedade', titulo: '7. Propriedade intelectual' },
+	{ id: 'responsabilidade', titulo: '8. Limitação de responsabilidade' },
+	{ id: 'sem-garantia', titulo: '9. Ausência de garantia de resultado' },
+	{ id: 'recusa', titulo: '10. Recusa e cancelamento de casos' },
+	{ id: 'assistencia', titulo: '11. Assistência técnica em audiência' },
+	{ id: 'uso-site', titulo: '12. Uso do site' },
+	{ id: 'alteracoes', titulo: '13. Alterações destes termos' },
+	{ id: 'foro', titulo: '14. Lei aplicável e foro' },
+	{ id: 'gerais', titulo: '15. Disposições gerais' },
+	{ id: 'contato', titulo: '16. Contato' },
+];
+---
+
+<Base title="Termos de Uso — Parecer Digital" description="Termos de uso e de contratação do serviço de análise técnica de conversas exportadas da Parecer Digital.">
+	<Header />
+
+	<div class="bg-cream">
+		<div class="max-w-3xl mx-auto px-6 md:px-10 py-16 md:py-24">
+			<p class="font-mono text-[13px] tracking-[.14em] uppercase text-muted mb-6">Termos de uso</p>
+			<h1 class="font-serif text-[2.5rem] leading-tight text-ink mb-3">Termos de Uso e de Contratação</h1>
+			<p class="font-mono text-[13px] text-muted-2 mb-12">Última atualização: {ATUALIZADO_EM}</p>
+
+			<div class="bg-cream-card border border-hairline rounded-2xl p-8 mb-14">
+				<p class="font-mono text-[13px] tracking-[.1em] uppercase text-rust-dark mb-4">Resumo em linguagem direta</p>
+				<ul class="space-y-3 text-[16px] leading-relaxed text-ink">
+					<li>• Isto é um <strong>parecer técnico de parte</strong> — não é perícia oficial, não é consultoria jurídica e não garante resultado em processo.</li>
+					<li>• Você declara que tem o direito de nos enviar o material analisado e responde por isso.</li>
+					<li>• Processamos localmente, sem nuvem e sem terceiros, com termo de confidencialidade assinado antes do envio, e apagamos os arquivos 30 dias após a entrega.</li>
+					<li>• Nossa responsabilidade civil, quando existir, é limitada ao valor pago pelo serviço — exceto em caso de dolo ou culpa grave.</li>
+				</ul>
+				<p class="text-[14px] text-muted mt-4">Isto é um resumo para facilitar a leitura. As cláusulas abaixo são as que valem.</p>
+			</div>
+
+			<nav class="mb-16 border-t border-b border-hairline py-8">
+				<p class="font-mono text-[13px] tracking-[.1em] uppercase text-muted mb-4">Nesta página</p>
+				<ul class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-2">
+					{secoes.map((s) => (
+						<li><a href={`#${s.id}`} class="text-[15px]">{s.titulo}</a></li>
+					))}
+				</ul>
+			</nav>
+
+			<div class="space-y-14 text-[16px] leading-relaxed text-ink [&_p]:mb-4 [&_p:last-child]:mb-0">
+				<section id="definicoes">
+					<h2 class="font-serif text-[26px] mb-5">1. Definições e partes</h2>
+					<p><strong>"Contratante"</strong>: pessoa física ou jurídica — normalmente advogado(a) ou escritório de advocacia — que contrata o serviço descrito nestes Termos.</p>
+					<p><strong>"Prestador"</strong>: {CONTACT.razaoSocial}, CNPJ {CONTACT.cnpj}, sediado em {CONTACT.cidade}/MT, doravante "Parecer Digital".</p>
+					<p><strong>"Material"</strong>: arquivos de conversas exportadas (WhatsApp, Telegram, e-mail em PST ou MBOX) e documentos correlatos enviados pelo Contratante para análise.</p>
+					<p><strong>"Parecer"</strong>: o documento técnico em PDF entregue como resultado da análise do Material.</p>
+					<p>Ao contratar o serviço — por confirmação da reunião de escopo, envio do Material ou qualquer outra forma de aceite — o Contratante concorda integralmente com estes Termos.</p>
+				</section>
+
+				<section id="natureza">
+					<h2 class="font-serif text-[26px] mb-5">2. O que este serviço é e o que não é</h2>
+					<p>O Prestador realiza análise técnica de arquivos de conversas e mensagens eletrônicas já exportados pelo Contratante ou por seu cliente, produzindo um parecer técnico de parte: um documento que organiza, transcreve e verifica a integridade das mensagens relevantes ao caso.</p>
+					<p>Este serviço expressamente <strong>não</strong> é e não deve ser entendido como:</p>
+					<ul class="list-disc pl-6 space-y-2 marker:text-rust-dark">
+						<li>perícia oficial ou judicial, nem possui fé pública — não substitui perito nomeado pelo juízo;</li>
+						<li>ata notarial de cartório;</li>
+						<li>consultoria jurídica, parecer jurídico ou qualquer forma de exercício da advocacia — o Prestador não pratica atos privativos de advogado (Lei 8.906/1994), e a responsabilidade técnico-jurídica pela tese, estratégia processual e uso do Parecer em juízo é exclusiva do Contratante;</li>
+						<li>serviço de recuperação de mensagem apagada, quebra de senha, acesso a aparelho ou extração forense de dispositivo — o Prestador trabalha exclusivamente sobre o arquivo já exportado e entregue pelo Contratante;</li>
+						<li>garantia de que o conteúdo analisado favorece a tese do Contratante ou de seu cliente.</li>
+					</ul>
+				</section>
+
+				<section id="escopo">
+					<h2 class="font-serif text-[26px] mb-5">3. Escopo, prazo e preço</h2>
+					<p>O serviço é contratado por caso, mediante reunião prévia de escopo (tese, o que precisa ficar provado, partes envolvidas). Sem essa etapa, o Prestador pode recusar ou adiar a análise.</p>
+					<p>Preço-base de R$ 1.800 por caso, para até 100 mil mensagens em uma ou mais conversas do mesmo caso. Urgência em 24 horas, contra-análise e acompanhamento como assistente técnico são cobrados à parte, conforme tabela vigente no site ou orçamento específico para volumes maiores.</p>
+					<p>O prazo de 48 horas é estimado a partir da confirmação do escopo e do recebimento do Material completo e legível; pode ser ajustado se o volume, formato ou estado do Material divergir significativamente do informado na reunião de escopo, ou por motivo de força maior.</p>
+					<p>Pagamento via PIX ou contra nota fiscal, devido somente após a reunião de escopo. Se, nessa etapa, o Prestador concluir que o Material não contém elementos úteis à tese informada, comunicará isso ao Contratante antes de iniciar a análise e antes de qualquer cobrança.</p>
+					<p>Casos cancelados pelo Contratante após o início efetivo da análise podem ser cobrados proporcionalmente ao trabalho já realizado.</p>
+				</section>
+
+				<section id="origem-licita">
+					<h2 class="font-serif text-[26px] mb-5">4. Responsabilidade pela origem e licitude do material</h2>
+					<p>O Contratante declara, sob sua exclusiva responsabilidade, que:</p>
+					<ul class="list-disc pl-6 space-y-2 marker:text-rust-dark">
+						<li>possui legitimidade e autorização — própria, de seu cliente, ou legal — para obter, deter e submeter o Material ao Prestador;</li>
+						<li>o Material foi obtido por meios lícitos, sem violação de sigilo de comunicação, sem interceptação não autorizada e sem invasão de dispositivo alheio (Lei 12.737/2012), em conformidade com a legislação aplicável, incluindo a Lei Geral de Proteção de Dados (Lei 13.709/2018);</li>
+						<li>está autorizado a compartilhar eventuais dados pessoais de terceiros contidos no Material para a finalidade específica desta análise.</li>
+					</ul>
+					<p>O Contratante compromete-se a indenizar e manter o Prestador indene de quaisquer reclamações, ações, multas ou danos de terceiros decorrentes da violação das declarações acima. O Prestador não possui meios técnicos de verificar a licitude da origem do Material antes de recebê-lo — essa verificação é de responsabilidade do Contratante.</p>
+				</section>
+
+				<section id="confidencialidade">
+					<h2 class="font-serif text-[26px] mb-5">5. Confidencialidade e tratamento do material</h2>
+					<p>Antes de receber qualquer arquivo, o Prestador formaliza termo de confidencialidade com o Contratante. O processamento do Material ocorre em ambiente local e isolado, sem uso de serviços de nuvem ou de terceiros.</p>
+					<p>O Material e os arquivos gerados durante a análise são eliminados em até 30 dias corridos após a entrega do Parecer, com comprovante de eliminação mediante solicitação.</p>
+					<p>Informações do caso não são usadas pelo Prestador para qualquer finalidade além da execução do serviço contratado — incluindo divulgação, exemplos de marketing ou treinamento de terceiros — salvo autorização expressa e por escrito do Contratante.</p>
+				</section>
+
+				<section id="lgpd">
+					<h2 class="font-serif text-[26px] mb-5">6. Proteção de dados pessoais (LGPD)</h2>
+					<p>Em relação a dados pessoais de terceiros eventualmente contidos no Material (partes, testemunhas, familiares etc.), para os fins da Lei 13.709/2018, o <strong>Contratante figura como controlador</strong> — por ter determinado a coleta original e a finalidade do tratamento — e o <strong>Prestador atua como operador</strong>, tratando os dados exclusivamente conforme as instruções do Contratante e para a finalidade de elaborar o Parecer.</p>
+					<p>O Prestador adota medidas técnicas e administrativas de segurança compatíveis com o volume e a sensibilidade dos dados tratados, e comunica ao Contratante, em prazo razoável, qualquer incidente de segurança que possa acarretar risco relevante aos titulares dos dados.</p>
+					<p>Cabe ao Contratante, como controlador, garantir a existência de base legal adequada para o tratamento dos dados pessoais de terceiros contidos no Material.</p>
+				</section>
+
+				<section id="propriedade">
+					<h2 class="font-serif text-[26px] mb-5">7. Propriedade intelectual</h2>
+					<p>Mediante pagamento integral, o Parecer e seus anexos são de titularidade do Contratante, que pode utilizá-los livremente para a finalidade contratada.</p>
+					<p>A metodologia, os scripts, modelos, ferramentas e know-how empregados na análise permanecem de propriedade exclusiva do Prestador, ainda que refletidos no formato do Parecer entregue.</p>
+					<p>O conteúdo do site parecerdigital.com (textos, layout, marca) é de titularidade do Prestador ou de seus licenciantes e não pode ser copiado ou reutilizado sem autorização.</p>
+				</section>
+
+				<section id="responsabilidade">
+					<h2 class="font-serif text-[26px] mb-5">8. Limitação de responsabilidade</h2>
+					<p>A responsabilidade civil do Prestador por qualquer dano comprovadamente causado pela prestação do serviço fica limitada ao valor efetivamente pago pelo Contratante no caso específico em que o dano ocorreu.</p>
+					<p>O Prestador não responde por danos indiretos, lucros cessantes, perda de chance processual, sucumbência ou qualquer resultado do processo judicial, administrativo ou arbitral em que o Parecer seja utilizado.</p>
+					<p>As limitações desta cláusula não se aplicam a danos decorrentes de dolo ou culpa grave do Prestador, nem afastam direitos que não possam ser validamente limitados por contrato perante a legislação brasileira.</p>
+				</section>
+
+				<section id="sem-garantia">
+					<h2 class="font-serif text-[26px] mb-5">9. Ausência de garantia de resultado</h2>
+					<p>O Prestador não garante, sob nenhuma hipótese, resultado favorável em processo judicial, administrativo ou arbitral. O Parecer reflete o que a análise técnica encontra no Material — incluindo elementos desfavoráveis à tese do Contratante ou de seu cliente — e sua utilização estratégica é de responsabilidade exclusiva do Contratante.</p>
+				</section>
+
+				<section id="recusa">
+					<h2 class="font-serif text-[26px] mb-5">10. Recusa e cancelamento de casos</h2>
+					<p>O Prestador pode recusar-se a analisar qualquer caso, a qualquer momento antes do início efetivo da análise, sem necessidade de justificativa — especialmente diante de indícios de ilicitude na origem do Material, conflito de interesses ou material fora do escopo técnico oferecido. Casos recusados nessas condições não geram cobrança.</p>
+				</section>
+
+				<section id="assistencia">
+					<h2 class="font-serif text-[26px] mb-5">11. Assistência técnica em audiência</h2>
+					<p>Esclarecimentos técnicos presenciais ou por vídeo sobre o Parecer — incluindo eventual atuação como assistente técnico em caso de perícia judicial — são serviços à parte, com escopo, prazo e preço definidos em acordo específico, não incluídos automaticamente na contratação do Parecer.</p>
+				</section>
+
+				<section id="uso-site">
+					<h2 class="font-serif text-[26px] mb-5">12. Uso do site</h2>
+					<p>O site parecerdigital.com é fornecido "como está", sem garantia de disponibilidade ininterrupta. É vedado seu uso para fins ilícitos, coleta automatizada de dados (scraping) ou qualquer tentativa de acesso não autorizado aos sistemas do Prestador.</p>
+					<p>Links para sites de terceiros (como o WhatsApp) são fornecidos por conveniência; o Prestador não se responsabiliza pelo conteúdo ou pelas práticas desses terceiros.</p>
+				</section>
+
+				<section id="alteracoes">
+					<h2 class="font-serif text-[26px] mb-5">13. Alterações destes termos</h2>
+					<p>Estes Termos podem ser atualizados a qualquer momento, com a data de "última atualização" revisada no topo desta página. Alterações relevantes que afetem casos em andamento serão comunicadas diretamente ao Contratante.</p>
+				</section>
+
+				<section id="foro">
+					<h2 class="font-serif text-[26px] mb-5">14. Lei aplicável e foro</h2>
+					<p>Estes Termos são regidos pelas leis da República Federativa do Brasil. Fica eleito o foro da Comarca de {CONTACT.cidade}/MT para dirimir quaisquer controvérsias decorrentes destes Termos, com renúncia expressa a qualquer outro, por mais privilegiado que seja.</p>
+				</section>
+
+				<section id="gerais">
+					<h2 class="font-serif text-[26px] mb-5">15. Disposições gerais</h2>
+					<p>Se qualquer cláusula destes Termos for considerada nula ou inexequível, as demais permanecem em pleno vigor. A tolerância de eventual descumprimento não implica renúncia ao direito de exigir o cumprimento das obrigações aqui previstas.</p>
+					<p>Estes Termos, em conjunto com a <a href="/privacidade">Política de Privacidade</a> e o termo de confidencialidade específico de cada caso, constituem o acordo integral entre as partes quanto ao objeto aqui tratado.</p>
+				</section>
+
+				<section id="contato">
+					<h2 class="font-serif text-[26px] mb-5">16. Contato</h2>
+					<p>Dúvidas sobre estes Termos podem ser tratadas pelo WhatsApp {WHATSAPP_DISPLAY}.</p>
+					<p class="font-mono text-[14px] text-muted-2">{CONTACT.razaoSocial} — CNPJ {CONTACT.cnpj} — {CONTACT.cidade}/MT</p>
+				</section>
+			</div>
+		</div>
+	</div>
+
+	<Footer />
+</Base>
