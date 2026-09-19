@@ -1,0 +1,14 @@
+---
+import Logo from './Logo.astro';
+import { WHATSAPP_LINKS, WHATSAPP_DISPLAY } from '../config';
+---
+
+<div style="border-bottom: 1px solid #E5DCD2;">
+	<div class="wrap" style="display: flex; align-items: center; justify-content: space-between; height: 76px;">
+		<div style="display: flex; align-items: baseline; gap: 10px;">
+			<Logo />
+			<span class="mono" style="font-size: 12px; color: #6F655D;">parecerdigital.com</span>
+		</div>
+		<a class="mono" href={WHATSAPP_LINKS.header} data-wa-section="header" style="font-size: 14px; color: #1A1512; text-decoration: none; font-weight: 500;">{WHATSAPP_DISPLAY} &rarr;</a>
+	</div>
+</div>
