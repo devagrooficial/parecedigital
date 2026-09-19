@@ -24,7 +24,8 @@ body{margin:0;background:#F7F3EE;font-family:Archivo,"Helvetica Neue",sans-serif
 a{color:#C4411D}a:hover{color:#A83410}
 .grifo{position:relative;display:inline;z-index:0;color:#FFFFFF}
 .grifo::before{content:"";position:absolute;left:-.14em;right:-.14em;top:.14em;bottom:.02em;background:#ED5A2F;border-radius:.45em .3em .5em .35em;transform:rotate(-.7deg);z-index:-1}
-.grifo-fino::before{top:.44em;bottom:.04em;border-radius:.3em;background:#C9400F}
+.grifo-fino::before{content:none}
+.grifo-fino{background:#C9400F;padding:.08em .14em;margin:0 -.14em;border-radius:.3em;box-decoration-break:clone;-webkit-box-decoration-break:clone}
 .wrap{max-width:1180px;margin:0 auto;padding:0 40px;box-sizing:border-box}
 .eyebrow{font-family:"IBM Plex Mono",monospace;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#4C443E}
 .mono{font-family:"IBM Plex Mono",monospace}
