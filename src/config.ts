@@ -1,12 +1,12 @@
 // Constantes de contato do site. Nada de número/dado espalhado pelo HTML —
-// tudo entra aqui, com TODO, e os componentes importam daqui.
-// TODO: preencher com os dados reais antes de publicar.
+// tudo entra aqui e os componentes importam daqui.
+// Ainda falta preencher CONTACT antes de publicar (marcado com TODO).
 
 /** Dígitos em formato internacional (ex: 5511999998888). Usado nos links wa.me. */
-export const WHATSAPP_NUMBER = '55XXXXXXXXXXX'; // TODO: número real do WhatsApp
+export const WHATSAPP_NUMBER = '5565998007684';
 
 /** Como o número aparece escrito no cabeçalho. */
-export const WHATSAPP_DISPLAY = '[SEU WHATSAPP]'; // TODO: ex. "+55 11 99999-8888"
+export const WHATSAPP_DISPLAY = '+55 65 99800-7684';
 
 export const CONTACT = {
 	razaoSocial: '[SUA RAZÃO SOCIAL]', // TODO
