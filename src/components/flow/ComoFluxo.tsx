@@ -106,6 +106,8 @@ export default function ComoFluxo() {
 				zoomOnPinch={false}
 				zoomOnDoubleClick={false}
 				preventScrolling={false}
+				// O crédito "React Flow" é um pedido do projeto (plano Pro), não exigência da licença MIT.
+				proOptions={{ hideAttribution: true }}
 			>
 				<Background variant={BackgroundVariant.Dots} gap={20} size={1.4} color="#D8CCBE" />
 			</ReactFlow>

@@ -158,14 +158,6 @@
 	background: transparent;
 	--xy-edge-stroke-default: var(--color-accent);
 	--xy-edge-stroke-width-default: 1.75;
-	--xy-attribution-background-color-default: transparent;
-}
-.flow-canvas .react-flow__attribution {
-	font-family: var(--font-mono);
-	font-size: 10px;
-}
-.flow-canvas .react-flow__attribution a {
-	color: var(--color-muted-2);
 }
 .flow-canvas .react-flow__handle {
 	width: 9px;
