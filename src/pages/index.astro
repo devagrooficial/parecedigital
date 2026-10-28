@@ -1,7 +1,8 @@
 ---
 import Base from '../layouts/Base.astro';
-import Header from '../components/Header.astro';
+import Divider from '../components/Divider.astro';
 import Hero from '../components/Hero.astro';
+import Fatos from '../components/Fatos.astro';
 import Problema from '../components/Problema.astro';
 import Entrega from '../components/Entrega.astro';
 import Como from '../components/Como.astro';
@@ -9,22 +10,22 @@ import Preco from '../components/Preco.astro';
 import NaoE from '../components/NaoE.astro';
 import Faq from '../components/Faq.astro';
 import CtaFinal from '../components/CtaFinal.astro';
-import Footer from '../components/Footer.astro';
 ---
 
 <Base>
-	<div class="legacy">
-		<Header />
-		<Hero />
-		<hr class="rule" />
-		<Problema />
-		<Entrega />
-		<Como />
-		<Preco />
-		<NaoE />
-		<hr class="rule" />
-		<Faq />
-		<CtaFinal />
-		<Footer />
-	</div>
+	<Hero />
+	<Fatos />
+	<Divider />
+	<Problema />
+	<Divider />
+	<Entrega />
+	<Divider />
+	<Como />
+	<Divider />
+	<Preco />
+	<NaoE />
+	<Divider />
+	<Faq />
+	<Divider />
+	<CtaFinal />
 </Base>

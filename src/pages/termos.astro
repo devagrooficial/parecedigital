@@ -1,7 +1,5 @@
 ---
 import Base from '../layouts/Base.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
 import { CONTACT, WHATSAPP_DISPLAY } from '../config';
 
 const ATUALIZADO_EM = '19 de setembro de 2026';
@@ -27,9 +25,7 @@ const secoes = [
 ---
 
 <Base title="Termos de Uso — Parecer Digital" description="Termos de uso e de contratação do serviço de análise técnica de conversas exportadas da Parecer Digital.">
-	<Header />
-
-	<div class="bg-cream">
+	<div>
 		<div class="max-w-3xl mx-auto px-6 md:px-10 py-16 md:py-24">
 			<p class="font-mono text-[13px] tracking-[.14em] uppercase text-muted mb-6">Termos de uso</p>
 			<h1 class="font-serif text-[2.5rem] leading-tight text-ink mb-3">Termos de Uso e de Contratação</h1>
@@ -172,5 +168,4 @@ const secoes = [
 		</div>
 	</div>
 
-	<Footer />
 </Base>

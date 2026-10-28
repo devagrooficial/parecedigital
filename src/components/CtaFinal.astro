@@ -1,12 +1,24 @@
 ---
+import Button from './Button.astro';
 import { WHATSAPP_LINKS } from '../config';
 ---
 
-<div style="background: #1A1512; color: #F7F3EE; padding: 96px 0;">
-	<div class="wrap" style="text-align: center;">
-		<h2 style="font-size: 44px; line-height: 1.12; color: #F7F3EE; max-width: 700px; margin: 0 auto 22px;">Me manda o caso e eu te digo hoje se tem material ali.</h2>
-		<p style="font-size: 18px; line-height: 1.6; color: #C6B6AC; max-width: 560px; margin: 0 auto 40px;">Primeira conversa sem custo e sem compromisso. Você descreve o processo, eu digo se vale a análise — e se não valer, eu falo isso também.</p>
-		<a class="btn" href={WHATSAPP_LINKS.ctaFinal} data-wa-section="cta-final" style="background: #ED5A2F; color: #FFFFFF; font-size: 24px; min-height: 64px; padding: 0 40px;">Chamar no WhatsApp</a>
-		<p class="mono" style="font-size: 14px; color: #B2A097; margin-top: 26px;">Resposta em até 2 horas em dia útil</p>
+<section class="relative overflow-hidden bg-ink px-6 py-16 text-center text-[#F7F3EE] md:px-10 md:py-24">
+	<!-- hachura clara nas bordas do bloco, no mesmo desenho das faixas da página -->
+	<div
+		class="pointer-events-none absolute inset-0"
+		style="background-image: repeating-linear-gradient(135deg, rgb(247 243 238 / 0.045) 0, rgb(247 243 238 / 0.045) 1px, transparent 1px, transparent 7px); mask-image: linear-gradient(90deg, #000, transparent 22%, transparent 78%, #000);"
+		aria-hidden="true"
+	>
 	</div>
-</div>
+	<div class="relative">
+		<h2 class="mx-auto mb-5 max-w-[700px] text-[32px] leading-[1.12] text-[#F7F3EE] md:text-[44px]">
+			Me manda o caso e eu te digo hoje se tem material ali.
+		</h2>
+		<p class="mx-auto mb-10 max-w-[560px] text-lg leading-[1.6] text-on-dark">
+			Primeira conversa sem custo e sem compromisso. Você descreve o processo, eu digo se vale a análise — e se não valer, eu falo isso também.
+		</p>
+		<Button href={WHATSAPP_LINKS.ctaFinal} section="cta-final" variant="accent" size="lg">Chamar no WhatsApp</Button>
+		<p class="mt-6 font-mono text-sm text-on-dark-2">Resposta em até 2 horas em dia útil</p>
+	</div>
+</section>

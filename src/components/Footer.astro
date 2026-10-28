@@ -2,9 +2,12 @@
 import { CONTACT } from '../config';
 ---
 
-<div style="padding: 36px 0; border-top: 1px solid #E5DCD2;">
-	<div class="wrap" style="display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap;">
-		<p class="mono" style="font-size: 13px; color: #6F655D; margin: 0;">parecerdigital.com &nbsp;·&nbsp; CNPJ {CONTACT.cnpj} &nbsp;·&nbsp; {CONTACT.cidade}/MT</p>
-		<p class="mono" style="font-size: 13px; color: #6F655D; margin: 0;">Análises produzidas com ferramenta própria de processamento local &nbsp;·&nbsp; <a href="/termos" style="color: #6F655D;">Termos de uso</a></p>
+<footer class="border-t border-hairline px-6 py-9 md:px-10">
+	<div class="flex flex-wrap items-center justify-between gap-5 font-mono text-[13px] text-muted-2">
+		<p>parecerdigital.com &nbsp;·&nbsp; CNPJ {CONTACT.cnpj} &nbsp;·&nbsp; {CONTACT.cidade}/MT</p>
+		<p>
+			Análises produzidas com ferramenta própria de processamento local &nbsp;·&nbsp;
+			<a href="/termos" class="text-muted-2 underline underline-offset-4 hover:text-ink">Termos de uso</a>
+		</p>
 	</div>
-</div>
+</footer>

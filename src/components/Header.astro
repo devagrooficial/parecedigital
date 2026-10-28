@@ -1,13 +1,48 @@
 ---
 import Logo from './Logo.astro';
+import Button from './Button.astro';
 import { WHATSAPP_LINKS, WHATSAPP_DISPLAY } from '../config';
+
+const links = [
+	{ href: '/#entrega', label: 'O que entrega' },
+	{ href: '/#como', label: 'Como funciona' },
+	{ href: '/#preco', label: 'Preço' },
+	{ href: '/#faq', label: 'FAQ' },
+];
 ---
 
-<div style="border-bottom: 1px solid #E5DCD2;">
-	<div class="wrap" style="display: flex; align-items: center; justify-content: space-between; height: 76px;">
-		<div style="display: flex; align-items: baseline;">
+<header class="hatch sticky top-0 z-50 border-b border-hairline">
+	<nav
+		aria-label="Principal"
+		class="relative mx-auto flex h-[76px] max-w-[1180px] items-center justify-between gap-6 bg-cream px-6 md:px-10 frame:border-x frame:border-hairline"
+	>
+		<!-- Losangos que ligam os trilhos laterais ao header fixo -->
+		<span class="cross cross-bl cross-brand" aria-hidden="true"></span>
+		<span class="cross cross-br cross-brand" aria-hidden="true"></span>
+
+		<a href="/" aria-label="Parecer Digital — início" class="flex items-center">
 			<Logo />
+		</a>
+
+		<div class="flex items-center gap-8">
+			<ul class="hidden items-center gap-8 md:flex">
+				{
+					links.map((l) => (
+						<li>
+							<a
+								href={l.href}
+								class="relative inline-flex min-h-11 items-center text-sm text-muted no-underline transition-colors after:absolute after:-bottom-px after:left-0 after:h-px after:w-0 after:bg-ink after:transition-all hover:text-ink hover:after:w-full"
+							>
+								{l.label}
+							</a>
+						</li>
+					))
+				}
+			</ul>
+			<Button href={WHATSAPP_LINKS.header} section="header" size="sm">
+				<span class="hidden font-mono lg:inline">{WHATSAPP_DISPLAY}</span>
+				<span class="lg:hidden">WhatsApp</span>
+			</Button>
 		</div>
-		<a class="mono" href={WHATSAPP_LINKS.header} data-wa-section="header" style="font-size: 14px; color: #1A1512; text-decoration: none; font-weight: 500;">{WHATSAPP_DISPLAY} &rarr;</a>
-	</div>
-</div>
+	</nav>
+</header>

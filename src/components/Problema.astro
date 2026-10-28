@@ -1,23 +1,49 @@
-<div class="sec" style="padding: 96px 0;">
-	<div class="wrap">
-		<h2 style="font-size: 40px; line-height: 1.15; max-width: 720px; margin-bottom: 20px;">O problema não é a prova. É o volume.</h2>
-		<p style="font-size: 18px; line-height: 1.6; max-width: 620px; color: #4C443E; margin-bottom: 52px;">A conversa que ganha a causa está ali dentro. Só que ninguém tem três dias para ler um arquivo de texto corrido de 40 mil linhas.</p>
-		<div class="three" style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px;">
-			<div class="card" style="padding: 32px;">
-				<p class="mono" style="font-size: 13px; color: #A83410; margin-bottom: 16px;">01</p>
-				<h3 style="font-size: 22px; line-height: 1.25; margin-bottom: 14px;">O arquivo é ilegível</h3>
-				<p style="font-size: 16px; line-height: 1.6; color: #4C443E;">O export sai como texto corrido, sem paginação e sem numeração. Ctrl+F não encontra o que você ainda não sabe procurar.</p>
-			</div>
-			<div class="card" style="padding: 32px;">
-				<p class="mono" style="font-size: 13px; color: #A83410; margin-bottom: 16px;">02</p>
-				<h3 style="font-size: 22px; line-height: 1.25; margin-bottom: 14px;">O prazo não espera</h3>
-				<p style="font-size: 16px; line-height: 1.6; color: #4C443E;">Triagem manual de um grupo com dois anos de histórico consome dias inteiros de um advogado que custa caro por hora.</p>
-			</div>
-			<div class="card" style="padding: 32px;">
-				<p class="mono" style="font-size: 13px; color: #A83410; margin-bottom: 16px;">03</p>
-				<h3 style="font-size: 22px; line-height: 1.25; margin-bottom: 14px;">A origem vai ser atacada</h3>
-				<p style="font-size: 16px; line-height: 1.6; color: #4C443E;">Existe aplicativo pronto para forjar conversa de WhatsApp. Sem hash e sem metodologia registrada, a parte contrária derruba o print.</p>
-			</div>
-		</div>
+---
+import Icon from './Icon.astro';
+import type { IconName } from '../lib/icons';
+
+const cards: { numero: string; icone: IconName; titulo: string; texto: string }[] = [
+	{
+		numero: '01',
+		icone: 'file',
+		titulo: 'O arquivo é ilegível',
+		texto: 'O export sai como texto corrido, sem paginação e sem numeração. Ctrl+F não encontra o que você ainda não sabe procurar.',
+	},
+	{
+		numero: '02',
+		icone: 'clock',
+		titulo: 'O prazo não espera',
+		texto: 'Triagem manual de um grupo com dois anos de histórico consome dias inteiros de um advogado que custa caro por hora.',
+	},
+	{
+		numero: '03',
+		icone: 'shield-alert',
+		titulo: 'A origem vai ser atacada',
+		texto: 'Existe aplicativo pronto para forjar conversa de WhatsApp. Sem hash e sem metodologia registrada, a parte contrária derruba o print.',
+	},
+];
+---
+
+<section class="px-6 py-16 md:px-10 md:py-24">
+	<p class="mb-5 font-mono text-[13px] tracking-[.14em] text-muted uppercase">O problema</p>
+	<h2 class="mb-5 max-w-[720px] text-[32px] leading-[1.15] md:text-[40px]">O problema não é a prova. É o volume.</h2>
+	<p class="mb-12 max-w-[620px] text-lg leading-[1.6] text-muted">
+		A conversa que ganha a causa está ali dentro. Só que ninguém tem três dias para ler um arquivo de texto corrido de 40 mil linhas.
+	</p>
+	<div class="grid gap-6 md:grid-cols-3">
+		{
+			cards.map((c) => (
+				<article class="group relative rounded-[14px] border border-hairline bg-cream-card p-8 transition-colors hover:border-accent/60">
+					<div class="mb-6 flex items-start justify-between">
+						<span class="grid size-11 place-items-center rounded-[10px] bg-accent text-white">
+							<Icon name={c.icone} size={22} />
+						</span>
+						<span class="font-mono text-[13px] text-rust-dark">{c.numero}</span>
+					</div>
+					<h3 class="mb-3.5 text-[22px] leading-tight">{c.titulo}</h3>
+					<p class="text-base leading-[1.6] text-muted">{c.texto}</p>
+				</article>
+			))
+		}
 	</div>
-</div>
+</section>

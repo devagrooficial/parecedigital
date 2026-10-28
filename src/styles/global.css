@@ -1,9 +1,12 @@
 @import "tailwindcss";
 
 /*
-  Tokens da marca, para as páginas novas (termos, privacidade, obrigado)
-  que usam utilitários Tailwind — ex.: bg-cream, text-ink, font-serif.
-  A página aprovada abaixo usa os hex direto e não depende disto.
+  Tokens da marca. As cores abaixo seguem a tabela de contraste do projeto:
+  - botão primário: ink + branco
+  - grifo do título (texto grande): accent + branco
+  - grifo em corpo de texto: accent-dark + branco
+  - títulos sobre fundo escuro: accent-light sobre ink
+  Texto branco sobre laranja só em tamanho grande; em tamanho pequeno, escurecer o laranja.
 */
 @theme {
 	--font-sans: Archivo, "Helvetica Neue", sans-serif;
@@ -11,67 +14,169 @@
 	--font-mono: "IBM Plex Mono", monospace;
 
 	--color-ink: #1A1512;
+	--color-ink-soft: #221C18;
 	--color-cream: #F7F3EE;
 	--color-cream-card: #FFFCF7;
+	--color-cream-deep: #F0EAE1;
 	--color-muted: #4C443E;
 	--color-muted-2: #6F655D;
 	--color-hairline: #E5DCD2;
+	--color-hairline-strong: #C4B8AA;
 	--color-rust: #C4411D;
 	--color-rust-dark: #A83410;
 	--color-accent: #ED5A2F;
 	--color-accent-dark: #C9400F;
 	--color-accent-light: #F8845F;
+	--color-on-dark: #C6B6AC;
+	--color-on-dark-2: #B2A097;
+
+	/* md = o breakpoint de 860px do design original; frame = largura em que os trilhos laterais aparecem */
+	--breakpoint-md: 861px;
+	--breakpoint-frame: 1181px;
 }
 
-/*
-  CSS do design aprovado (index.html), trazido como veio — sem conversão
-  para utilitários Tailwind. Tailwind é usado só para o que for
-  adicionado depois (analytics, novas páginas), não para reescrever isto.
-*/
-html{scroll-behavior:smooth}
-body{margin:0;background:#F7F3EE;font-family:Archivo,"Helvetica Neue",sans-serif;color:#1A1512;-webkit-font-smoothing:antialiased}
-a{color:#C4411D}a:hover{color:#A83410}
-.grifo{position:relative;display:inline;z-index:0;color:#FFFFFF}
-.grifo::before{content:"";position:absolute;left:-.14em;right:-.14em;top:.14em;bottom:.02em;background:#ED5A2F;border-radius:.45em .3em .5em .35em;transform:rotate(-.7deg);z-index:-1}
-/*
-  .grifo-fino usa background direto + box-decoration-break em vez do
-  ::before absoluto do .grifo: a frase da seção de preço quebra em várias
-  linhas, e um ::before posicionado em absolute não acompanha um span
-  inline que quebra linha — o fundo cobria só a 1ª linha e o resto do
-  texto (branco) ficava ilegível sobre o bege da página. Mesmas cores
-  (#C9400F / #FFFFFF), só a técnica de desenhar o grifo muda.
-*/
-.grifo-fino::before{content:none}
-.grifo-fino{background:#C9400F;padding:.08em .14em;margin:0 -.14em;border-radius:.3em;box-decoration-break:clone;-webkit-box-decoration-break:clone}
-.wrap{max-width:1180px;margin:0 auto;padding:0 40px;box-sizing:border-box}
-.eyebrow{font-family:"IBM Plex Mono",monospace;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#4C443E}
-.mono{font-family:"IBM Plex Mono",monospace}
-.card{background:#FFFCF7;border:1px solid #E5DCD2;border-radius:14px;box-sizing:border-box}
-.btn{display:inline-flex;align-items:center;justify-content:center;min-height:56px;padding:0 30px;border-radius:10px;font-weight:600;font-size:17px;text-decoration:none;border:1px solid transparent}
-.btn-p{background:#1A1512;color:#FFFFFF}
-.btn-p:hover{background:#000000;color:#FFFFFF}
-.btn-s{background:transparent;color:#1A1512;border-color:#C4B8AA}
-.btn-s:hover{background:#EFE7DD;color:#1A1512;border-color:#ED5A2F}
-.rule{height:1px;background:#E5DCD2;border:0;margin:0}
-/*
-  Escopadas em .legacy (só a marcação do design aprovado, ver index.astro):
-  são resets de elemento cru (h1/h2/h3/p/ul) e, sem escopo, vazam para
-  páginas novas em Tailwind — zeram margem de <p>/<h2> e o marcador de
-  <ul> ali, já que uma regra de elemento sem @layer do CSS legado vence
-  um utilitário do Tailwind (que vive dentro de @layer utilities),
-  independente de especificidade.
-*/
-.legacy h1,.legacy h2,.legacy h3{font-family:Spectral,Georgia,serif;font-weight:600;margin:0;letter-spacing:-.01em}
-.legacy p{margin:0}
-.legacy ul{margin:0;padding:0;list-style:none}
-@media (max-width:860px){
-.wrap{padding:0 22px}
-.h1{font-size:40px !important;line-height:1.1 !important}
-.two{grid-template-columns:1fr !important}
-.three{grid-template-columns:1fr !important}
-.sec{padding:64px 0 !important}
-.heroPad{padding:56px 0 64px !important}
-.priceRow{flex-direction:column !important;align-items:stretch !important}
-.ctaRow{flex-direction:column !important;align-items:stretch !important}
-.btn{width:100%}
+@layer base {
+	html {
+		scroll-behavior: smooth;
+		/* âncoras não ficam escondidas atrás do header fixo */
+		scroll-padding-top: 96px;
+		overflow-x: clip;
+	}
+	body {
+		background-color: var(--color-cream-deep);
+		background-image: repeating-linear-gradient(135deg, rgb(26 21 18 / 0.075) 0, rgb(26 21 18 / 0.075) 1px, transparent 1px, transparent 7px);
+		color: var(--color-ink);
+		font-family: var(--font-sans);
+		-webkit-font-smoothing: antialiased;
+	}
+	h1, h2, h3 {
+		font-family: var(--font-serif);
+		font-weight: 600;
+		letter-spacing: -0.01em;
+	}
+	/* link em texto corrido; botões e navegação definem a própria cor por utilitário */
+	a {
+		color: var(--color-rust);
+	}
+	a:hover {
+		color: var(--color-rust-dark);
+	}
+	summary {
+		list-style: none;
+	}
+	summary::-webkit-details-marker {
+		display: none;
+	}
+}
+
+@layer components {
+	/* Faixa hachurada: laterais do site, header e divisórias entre seções. */
+	.hatch {
+		background-color: var(--color-cream-deep);
+		background-image: repeating-linear-gradient(135deg, rgb(26 21 18 / 0.075) 0, rgb(26 21 18 / 0.075) 1px, transparent 1px, transparent 7px);
+	}
+
+	/* Coluna central. As bordas laterais são os "trilhos" que descem a página a partir do header fixo. */
+	.frame {
+		position: relative;
+		max-width: 1180px;
+		margin-inline: auto;
+		background-color: var(--color-cream);
+	}
+	@media (min-width: 1181px) {
+		.frame {
+			border-inline: 1px solid var(--color-hairline);
+		}
+	}
+
+	/*
+	  Losango: quadrado girado em 45° no encontro de um trilho com uma linha horizontal
+	  (base do header, divisórias). Só aparece quando há espaço lateral para os trilhos.
+	*/
+	.cross {
+		display: none;
+		position: absolute;
+		width: 10px;
+		height: 10px;
+		transform: rotate(45deg);
+		border: 1px solid rgb(26 21 18 / 0.32);
+		background-color: var(--color-cream);
+		z-index: 3;
+	}
+	@media (min-width: 1181px) {
+		.cross {
+			display: block;
+		}
+	}
+	.cross-tl { top: -5px; left: -5.5px; }
+	.cross-tr { top: -5px; right: -5.5px; }
+	.cross-bl { bottom: -5px; left: -5.5px; }
+	.cross-br { bottom: -5px; right: -5.5px; }
+	/* losango do header: o que liga o trilho ao header fixo leva a cor da marca */
+	.cross-brand {
+		border-color: var(--color-accent-dark);
+		background-color: var(--color-accent);
+	}
+
+	/* Grifo (título): texto grande, branco sobre #ED5A2F. */
+	.grifo {
+		position: relative;
+		display: inline;
+		z-index: 0;
+		color: #FFFFFF;
+	}
+	.grifo::before {
+		content: "";
+		position: absolute;
+		left: -0.14em;
+		right: -0.14em;
+		top: 0.14em;
+		bottom: 0.02em;
+		background: var(--color-accent);
+		border-radius: 0.45em 0.3em 0.5em 0.35em;
+		transform: rotate(-0.7deg);
+		z-index: -1;
+	}
+	/*
+	  Grifo em corpo de texto (16px): branco sobre #C9400F, 4,7:1.
+	  Pinta o próprio fundo com box-decoration-break em vez do ::before absoluto,
+	  porque a frase quebra em várias linhas e um ::before só cobriria a primeira.
+	*/
+	.grifo-fino {
+		color: #FFFFFF;
+		background: var(--color-accent-dark);
+		padding: 0.08em 0.14em;
+		margin: 0 -0.14em;
+		border-radius: 0.3em;
+		box-decoration-break: clone;
+		-webkit-box-decoration-break: clone;
+	}
+}
+
+/* ReactFlow: diagrama de etapas */
+.flow-canvas .react-flow {
+	background: transparent;
+	--xy-edge-stroke-default: var(--color-accent);
+	--xy-edge-stroke-width-default: 1.75;
+	--xy-attribution-background-color-default: transparent;
+}
+.flow-canvas .react-flow__attribution {
+	font-family: var(--font-mono);
+	font-size: 10px;
+}
+.flow-canvas .react-flow__attribution a {
+	color: var(--color-muted-2);
+}
+.flow-canvas .react-flow__handle {
+	width: 9px;
+	height: 9px;
+	border: 2px solid var(--color-accent);
+	background: var(--color-cream-card);
+	min-width: 0;
+	min-height: 0;
+}
+@media (prefers-reduced-motion: reduce) {
+	.flow-canvas .react-flow__edge.animated path {
+		animation: none !important;
+	}
 }

@@ -1,29 +1,47 @@
 ---
+import Button from './Button.astro';
+import Icon from './Icon.astro';
 import { WHATSAPP_LINKS } from '../config';
+
+const adicionais = [
+	{ texto: 'Urgência em 24 horas', valor: 'R$ 2.600' },
+	{ texto: 'Contra-análise: comparo o export da parte contrária com o seu e aponto o que foi omitido', valor: 'R$ 2.400' },
+	{ texto: 'Acompanhamento como assistente técnico, se o juiz determinar perícia', valor: 'sob consulta' },
+];
 ---
 
-<div class="sec" style="padding: 0 0 96px;">
-	<div class="wrap">
-		<div class="card" style="padding: 56px;">
-			<p class="eyebrow" style="margin-bottom: 22px;">Preço fechado, sem surpresa</p>
-			<div class="priceRow" style="display: flex; gap: 48px; align-items: flex-start;">
-				<div style="flex-grow: 1;">
-					<div style="display: flex; align-items: baseline; gap: 14px; margin-bottom: 14px;">
-						<span style="font-family: Spectral, Georgia, serif; font-size: 52px; font-weight: 700;">R$ 1.800</span>
-						<span style="font-size: 17px; color: #4C443E;">por caso</span>
-					</div>
-					<p style="font-size: 17px; line-height: 1.6; color: #4C443E; max-width: 540px; margin-bottom: 26px;">Até 100 mil mensagens, uma ou várias conversas do mesmo caso, entrega em 48 horas úteis. Pagamento em PIX ou nota, só depois da reunião de escopo — se eu achar que não tem nada de útil ali dentro, eu te falo antes de você pagar.</p>
-					<ul style="display: flex; flex-direction: column; gap: 10px;">
-						<li style="font-size: 16px; color: #2F2823;"><span class="mono" style="color: #A83410;">+</span> &nbsp;Urgência em 24 horas &nbsp;·&nbsp; <span class="mono">R$ 2.600</span></li>
-						<li style="font-size: 16px; color: #2F2823;"><span class="mono" style="color: #A83410;">+</span> &nbsp;Contra-análise: comparo o export da parte contrária com o seu e aponto o que foi omitido &nbsp;·&nbsp; <span class="mono">R$ 2.400</span></li>
-						<li style="font-size: 16px; color: #2F2823;"><span class="mono" style="color: #A83410;">+</span> &nbsp;Acompanhamento como assistente técnico, se o juiz determinar perícia &nbsp;·&nbsp; <span class="mono">sob consulta</span></li>
-					</ul>
+<section id="preco" class="px-6 pb-16 md:px-10 md:pb-24">
+	<div class="rounded-[14px] border border-hairline bg-cream-card p-6 md:p-14">
+		<p class="mb-6 font-mono text-[13px] tracking-[.14em] text-muted uppercase">Preço fechado, sem surpresa</p>
+		<div class="flex gap-12 max-md:flex-col md:items-start">
+			<div class="grow">
+				<div class="mb-4 flex items-baseline gap-3.5">
+					<span class="font-serif text-[44px] leading-none font-bold md:text-[52px]">R$ 1.800</span>
+					<span class="text-[17px] text-muted">por caso</span>
 				</div>
-				<div style="width: 300px; flex-shrink: 0;">
-					<p style="font-size: 16px; line-height: 1.6; color: #4C443E; margin-bottom: 22px;">Para efeito de comparação: <span class="grifo grifo-fino">perícia digital contratada no mercado custa de R$ 5 mil a R$ 12 mil por caso</span>, e a ata notarial de uma conversa longa passa fácil dos R$ 10 mil em cartório.</p>
-					<a class="btn btn-p" href={WHATSAPP_LINKS.preco} data-wa-section="preco" style="width: 100%; box-sizing: border-box;">Falar sobre o meu caso</a>
-				</div>
+				<p class="mb-7 max-w-[540px] text-[17px] leading-[1.6] text-muted">
+					Até 100 mil mensagens, uma ou várias conversas do mesmo caso, entrega em 48 horas úteis. Pagamento em PIX ou nota, só depois da reunião de escopo — se eu achar que não tem nada de útil ali dentro, eu te falo antes de você pagar.
+				</p>
+				<ul class="max-w-[560px] border-b border-hairline">
+					{
+						adicionais.map((a) => (
+							<li class="flex items-start justify-between gap-4 border-t border-hairline py-3.5 text-base text-[#2F2823]">
+								<span class="flex items-start gap-2.5">
+									<Icon name="plus" size={16} class="mt-1 shrink-0 text-rust-dark" />
+									{a.texto}
+								</span>
+								<span class="shrink-0 font-mono text-sm">{a.valor}</span>
+							</li>
+						))
+					}
+				</ul>
+			</div>
+			<div class="shrink-0 md:w-[300px]">
+				<p class="mb-6 text-base leading-[1.7] text-muted">
+					Para efeito de comparação: <span class="grifo-fino">perícia digital contratada no mercado custa de R$ 5 mil a R$ 12 mil por caso</span>, e a ata notarial de uma conversa longa passa fácil dos R$ 10 mil em cartório.
+				</p>
+				<Button href={WHATSAPP_LINKS.preco} section="preco" class="w-full">Falar sobre o meu caso</Button>
 			</div>
 		</div>
 	</div>
-</div>
+</section>
