@@ -10,38 +10,40 @@ const adicionais = [
 ];
 ---
 
-<section id="preco" class="px-6 pb-16 md:px-10 md:pb-24">
+<section id="preco" class="px-6 pt-16 md:px-10 md:pt-24">
 	<div class="rounded-[14px] border border-hairline bg-cream-card p-6 md:p-14">
-		<p class="mb-6 font-mono text-[13px] tracking-[.14em] text-muted uppercase">Preço fechado, sem surpresa</p>
-		<div class="flex gap-12 max-md:flex-col md:items-start">
-			<div class="grow">
+		<p class="mb-8 font-mono text-[13px] tracking-[.14em] text-muted uppercase">Preço fechado, sem surpresa</p>
+
+		<div class="grid gap-10 md:grid-cols-[1fr_300px] md:gap-14">
+			<div>
 				<div class="mb-4 flex items-baseline gap-3.5">
 					<span class="font-serif text-[44px] leading-none font-bold md:text-[52px]">R$ 1.800</span>
 					<span class="text-[17px] text-muted">por caso</span>
 				</div>
-				<p class="mb-7 max-w-[540px] text-[17px] leading-[1.6] text-muted">
+				<p class="max-w-[560px] text-[17px] leading-[1.6] text-muted">
 					Até 100 mil mensagens, uma ou várias conversas do mesmo caso, entrega em 48 horas úteis. Pagamento em PIX ou nota, só depois da reunião de escopo — se eu achar que não tem nada de útil ali dentro, eu te falo antes de você pagar.
 				</p>
-				<ul class="max-w-[560px] border-b border-hairline">
-					{
-						adicionais.map((a) => (
-							<li class="flex items-start justify-between gap-4 border-t border-hairline py-3.5 text-base text-[#2F2823]">
-								<span class="flex items-start gap-2.5">
-									<Icon name="plus" size={16} class="mt-1 shrink-0 text-rust-dark" />
-									{a.texto}
-								</span>
-								<span class="shrink-0 font-mono text-sm">{a.valor}</span>
-							</li>
-						))
-					}
-				</ul>
 			</div>
-			<div class="shrink-0 md:w-[300px]">
+			<div>
 				<p class="mb-6 text-base leading-[1.7] text-muted">
 					Para efeito de comparação: <span class="grifo-fino">perícia digital contratada no mercado custa de R$ 5 mil a R$ 12 mil por caso</span>, e a ata notarial de uma conversa longa passa fácil dos R$ 10 mil em cartório.
 				</p>
 				<Button href={WHATSAPP_LINKS.preco} section="preco" class="w-full">Falar sobre o meu caso</Button>
 			</div>
 		</div>
+
+		<ul class="mt-10 grid divide-y divide-hairline border-t border-hairline md:mt-12 md:grid-cols-3 md:divide-x md:divide-y-0">
+			{
+				adicionais.map((a) => (
+					<li class="flex flex-col gap-2.5 py-5 md:px-7 md:py-6 md:first:pl-0 md:last:pr-0">
+						<span class="flex items-start gap-2.5 text-base leading-snug text-[#2F2823]">
+							<Icon name="plus" size={16} class="mt-[3px] shrink-0 text-rust-dark" />
+							{a.texto}
+						</span>
+						<span class="pl-[26px] font-mono text-[15px] font-medium text-ink">{a.valor}</span>
+					</li>
+				))
+			}
+		</ul>
 	</div>
 </section>
