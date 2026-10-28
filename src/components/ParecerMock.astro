@@ -1,0 +1,76 @@
+---
+import Icon from './Icon.astro';
+
+// Exemplo ilustrativo do entregável. Participantes, datas, valores e hashes são fictícios.
+const entradas = [
+	{ quando: '12/03/2025 · 14:32', autor: 'Participante A', texto: 'Então fechamos em R$ 12.500, pagos em duas parcelas.', linha: '18.204', hash: '9f3a…c1e2' },
+	{ quando: '12/03/2025 · 14:35', autor: 'Participante B', texto: 'Fechado. Mando a primeira parcela por PIX amanhã.', linha: '18.205', hash: '4d7b…0aa8' },
+	{ quando: '13/03/2025 · 09:10', autor: 'Participante B', texto: 'Parcela enviada. Confirma o recebimento?', linha: '18.431', hash: 'e21c…7f90' },
+];
+---
+
+<figure>
+	<div class="relative pr-3 pb-3">
+		<!-- folha hachurada deslocada atrás do documento, no mesmo desenho das faixas da página -->
+		<div class="hatch absolute top-3 right-0 bottom-0 left-3 rounded-[14px] border border-hairline" aria-hidden="true"></div>
+
+		<div
+			class="relative overflow-hidden rounded-[14px] border border-hairline bg-cream-card shadow-[0_28px_60px_-28px_rgb(26_21_18/0.28)]"
+			aria-hidden="true"
+		>
+			<div class="flex items-center justify-between border-b border-hairline bg-cream px-4 py-3">
+				<div class="flex items-center gap-3">
+					<span class="flex gap-1.5">
+						<span class="size-2.5 rounded-full bg-hairline-strong"></span>
+						<span class="size-2.5 rounded-full bg-hairline-strong"></span>
+						<span class="size-2.5 rounded-full bg-accent"></span>
+					</span>
+					<span class="font-mono text-xs text-muted-2">parecer-tecnico.pdf</span>
+				</div>
+				<span class="font-mono text-xs text-muted-2">pág. 3 de 18</span>
+			</div>
+
+			<div class="p-5 md:p-6">
+				<p class="font-mono text-[11px] tracking-[.14em] text-rust-dark uppercase">Parecer técnico</p>
+				<p class="mb-5 font-serif text-xl leading-tight font-semibold text-ink">Linha do tempo dos fatos</p>
+
+				<ol class="relative space-y-[18px] border-l border-dashed border-accent/50 pl-5">
+					{
+						entradas.map((e, i) => (
+							<li class="relative">
+								<span class="absolute top-1 -left-[26px] grid size-2.5 place-items-center">
+									{i === entradas.length - 1 && (
+										<span class="absolute inline-flex size-full animate-ping rounded-full bg-accent/50 motion-reduce:animate-none" />
+									)}
+									<span class="relative size-2.5 rounded-full border-2 border-accent bg-cream-card" />
+								</span>
+								<div class="flex flex-wrap items-center gap-x-2.5 gap-y-1">
+									<span class="font-mono text-xs text-muted-2">{e.quando}</span>
+									<span class="rounded-full border border-hairline-strong px-2 py-px font-mono text-[11px] text-ink">{e.autor}</span>
+								</div>
+								<p class="mt-1.5 text-[14.5px] leading-snug text-ink">{e.texto}</p>
+								<p class="mt-1.5 flex items-center gap-1.5 font-mono text-[11px] text-muted-2">
+									<Icon name="hash" size={12} class="shrink-0 text-accent-dark" />
+									linha {e.linha} · SHA-256 {e.hash}
+								</p>
+							</li>
+						))
+					}
+				</ol>
+			</div>
+
+			<div class="flex flex-wrap items-center gap-2 border-t border-hairline bg-cream px-5 py-3.5 md:px-6">
+				<span class="inline-flex items-center gap-1.5 rounded-full border border-hairline-strong bg-cream-card px-2.5 py-0.5 font-mono text-[11px] text-ink">
+					<Icon name="shield-check" size={13} class="text-accent-dark" />
+					integridade verificada
+				</span>
+				<span class="inline-flex items-center gap-1.5 rounded-full border border-hairline-strong bg-cream-card px-2.5 py-0.5 font-mono text-[11px] text-ink">
+					<Icon name="database" size={13} class="text-accent-dark" />
+					dados extraídos
+				</span>
+			</div>
+		</div>
+	</div>
+
+	<figcaption class="mt-3 pl-0.5 font-mono text-[11px] text-muted-2">Exemplo ilustrativo, com dados fictícios.</figcaption>
+</figure>
